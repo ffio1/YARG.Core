@@ -90,6 +90,8 @@ namespace YARG.Core.Chart
 
         public InstrumentTrack<ProKeysNote> ProKeys { get; set; } = new(Instrument.ProKeys);
 
+        public InstrumentTrack<EliteKeysNote> EliteKeys { get; set; } = new(Instrument.EliteKeys);
+
         public VocalsTrack Vocals { get; set; } = new(Instrument.Vocals);
         public VocalsTrack Harmony { get; set; } = new(Instrument.Harmony);
 
@@ -141,6 +143,7 @@ namespace YARG.Core.Chart
             ProBass_22Fret = loader.LoadProGuitarTrack(Instrument.ProBass_22Fret);
 
             ProKeys = loader.LoadProKeysTrack(Instrument.ProKeys);
+            EliteKeys = loader.LoadEliteKeysTrack(Instrument.EliteKeys);
 
             Vocals = loader.LoadVocalsTrack(Instrument.Vocals);
             Harmony = loader.LoadVocalsTrack(Instrument.Harmony);
@@ -212,6 +215,9 @@ namespace YARG.Core.Chart
 
             if (!song.ProKeys.IsEmpty)
                 ProKeys = song.ProKeys;
+
+            if (!song.EliteKeys.IsEmpty)
+                EliteKeys = song.EliteKeys;
 
             if (!song.Vocals.IsEmpty)
                 Vocals = song.Vocals;
@@ -313,6 +319,7 @@ namespace YARG.Core.Chart
             totalStartTime = Math.Min(TrackMin(ProGuitarTracks), totalStartTime);
 
             totalStartTime = Math.Min(ProKeys.GetStartTime(), totalStartTime);
+            totalStartTime = Math.Min(EliteKeys.GetStartTime(), totalStartTime);
 
             totalStartTime = Math.Min(VoxMin(VocalsTracks), totalStartTime);
 
@@ -346,6 +353,7 @@ namespace YARG.Core.Chart
             totalEndTime = Math.Max(TrackMax(ProGuitarTracks), totalEndTime);
 
             totalEndTime = Math.Max(ProKeys.GetEndTime(), totalEndTime);
+            totalEndTime = Math.Max(EliteKeys.GetEndTime(), totalEndTime);
 
             totalEndTime = Math.Max(VoxMax(VocalsTracks), totalEndTime);
 
@@ -379,6 +387,7 @@ namespace YARG.Core.Chart
             totalFirstTick = Math.Min(TrackMin(ProGuitarTracks), totalFirstTick);
 
             totalFirstTick = Math.Min(ProKeys.GetFirstTick(), totalFirstTick);
+            totalFirstTick = Math.Min(EliteKeys.GetFirstTick(), totalFirstTick);
 
             totalFirstTick = Math.Min(VoxMin(VocalsTracks), totalFirstTick);
 
@@ -412,6 +421,7 @@ namespace YARG.Core.Chart
             totalLastTick = Math.Max(TrackMax(ProGuitarTracks), totalLastTick);
 
             totalLastTick = Math.Max(ProKeys.GetLastTick(), totalLastTick);
+            totalLastTick = Math.Max(EliteKeys.GetLastTick(), totalLastTick);
 
             totalLastTick = Math.Max(VoxMax(VocalsTracks), totalLastTick);
 

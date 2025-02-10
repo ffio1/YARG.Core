@@ -45,6 +45,7 @@ namespace MoonscraperChartEditor.Song.IO
         private static readonly Dictionary<int, EventProcessFn> DrumsNoteProcessMap_Velocity = BuildDrumsNoteProcessDict(enableVelocity: true);
         private static readonly Dictionary<int, EventProcessFn> VocalsNoteProcessMap = BuildVocalsNoteProcessDict();
         private static readonly Dictionary<int, EventProcessFn> ProKeysNoteProcessMap = BuildProKeysNoteProcessDict();
+        private static readonly Dictionary<int, EventProcessFn> EliteKeysNoteProcessMap = BuildEliteKeysNoteProcessDict();
 
         private static readonly CommonPhraseSettings GuitarPhraseSettings = new()
         {
@@ -88,6 +89,12 @@ namespace MoonscraperChartEditor.Song.IO
             // lanePhrases = true, // Handled manually due to per-difficulty tracks
         };
 
+        private static readonly CommonPhraseSettings EliteKeysPhraseSettings = new()
+        {
+            soloNote = -1,
+            versusPhrases = false,
+        };
+
         // These dictionaries map the text of a MIDI text event to a specific function that processes them
         private static readonly Dictionary<string, ProcessModificationProcessFn> GuitarTextProcessMap = new()
         {
@@ -112,6 +119,10 @@ namespace MoonscraperChartEditor.Song.IO
         };
 
         private static readonly Dictionary<string, ProcessModificationProcessFn> ProKeysTextProcessMap = new()
+        {
+        };
+
+        private static readonly Dictionary<string, ProcessModificationProcessFn> EliteKeysTextProcessMap = new()
         {
         };
 
@@ -148,6 +159,10 @@ namespace MoonscraperChartEditor.Song.IO
         {
         };
 
+        private static readonly Dictionary<PhaseShiftSysEx.PhraseCode, EventProcessFn> EliteKeysSysExProcessMap = new()
+        {
+        };
+
         // Some post-processing events should always be carried out on certain tracks
         private static readonly List<EventProcessFn> GuitarPostProcessList = new()
         {
@@ -176,6 +191,10 @@ namespace MoonscraperChartEditor.Song.IO
         {
         };
 
+        private static readonly List<EventProcessFn> EliteKeysPostProcessList = new()
+        {
+        };
+
         private static Dictionary<int, EventProcessFn> GetNoteProcessDict(MoonChart.GameMode gameMode)
         {
             return gameMode switch
@@ -186,6 +205,7 @@ namespace MoonscraperChartEditor.Song.IO
                 MoonChart.GameMode.Drums => DrumsNoteProcessMap,
                 MoonChart.GameMode.Vocals => VocalsNoteProcessMap,
                 MoonChart.GameMode.ProKeys => ProKeysNoteProcessMap,
+                MoonChart.GameMode.EliteKeys => EliteKeysNoteProcessMap,
                 _ => throw new NotImplementedException($"No process map for game mode {gameMode}!")
             };
         }
@@ -204,6 +224,7 @@ namespace MoonscraperChartEditor.Song.IO
                 MoonChart.GameMode.Drums => DrumsPhraseSettings,
                 MoonChart.GameMode.Vocals => VocalsPhraseSettings,
                 MoonChart.GameMode.ProKeys => ProKeysPhraseSettings,
+                MoonChart.GameMode.EliteKeys => EliteKeysPhraseSettings,
                 _ => throw new NotImplementedException($"No process map for game mode {gameMode}!")
             };
             phraseSettings.starPowerNote = spNote;
@@ -225,6 +246,7 @@ namespace MoonscraperChartEditor.Song.IO
                 MoonChart.GameMode.Drums => DrumsTextProcessMap,
                 MoonChart.GameMode.Vocals => VocalsTextProcessMap,
                 MoonChart.GameMode.ProKeys => ProKeysTextProcessMap,
+                MoonChart.GameMode.EliteKeys => EliteKeysTextProcessMap,
                 _ => throw new NotImplementedException($"No process map for game mode {gameMode}!")
             };
         }
@@ -239,6 +261,7 @@ namespace MoonscraperChartEditor.Song.IO
                 MoonChart.GameMode.Drums => DrumsSysExProcessMap,
                 MoonChart.GameMode.Vocals => VocalsSysExProcessMap,
                 MoonChart.GameMode.ProKeys => ProKeysSysExProcessMap,
+                MoonChart.GameMode.EliteKeys => EliteKeysSysExProcessMap,
                 _ => throw new NotImplementedException($"No process map for game mode {gameMode}!")
             };
         }
@@ -253,6 +276,7 @@ namespace MoonscraperChartEditor.Song.IO
                 MoonChart.GameMode.Drums => DrumsPostProcessList,
                 MoonChart.GameMode.Vocals => VocalsPostProcessList,
                 MoonChart.GameMode.ProKeys => ProKeysPostProcessList,
+                MoonChart.GameMode.EliteKeys => EliteKeysPostProcessList,
                 _ => throw new NotImplementedException($"No process map for game mode {gameMode}!")
             };
         }
@@ -785,6 +809,40 @@ namespace MoonscraperChartEditor.Song.IO
                     if (eventProcessParams.trackDifficulty is null)
                     {
                         YargLogger.Fail("`trackDifficulty` cannot be null when processing Pro Keys!");
+                        return;
+                    }
+
+                    var diff = eventProcessParams.trackDifficulty.Value;
+                    ProcessNoteOnEventAsNote(ref eventProcessParams, diff, fret);
+                });
+            }
+
+            return processFnDict;
+        }
+
+        private static Dictionary<int, EventProcessFn> BuildEliteKeysNoteProcessDict()
+        {
+            var processFnDict = new Dictionary<int, EventProcessFn>()
+            {
+                { MidIOHelper.PRO_KEYS_GLISSANDO, (ref EventProcessParams eventProcessParams) =>
+                    ProcessNoteOnEventAsSpecialPhrase(ref eventProcessParams,
+                        MoonPhrase.Type.EliteKeys_Glissando, eventProcessParams.trackDifficulty)
+                },
+                { MidIOHelper.TRILL_LANE_NOTE, (ref EventProcessParams eventProcessParams) =>
+                    ProcessNoteOnEventAsSpecialPhrase(ref eventProcessParams,
+                        MoonPhrase.Type.TrillLane, eventProcessParams.trackDifficulty)
+                },
+            };
+
+            for (int key = MidIOHelper.ELITE_KEYS_RANGE_START; key <= MidIOHelper.ELITE_KEYS_RANGE_END; key++)
+            {
+                int fret = key - MidIOHelper.ELITE_KEYS_RANGE_START;
+
+                processFnDict.Add(key, (ref EventProcessParams eventProcessParams) =>
+                {
+                    if (eventProcessParams.trackDifficulty is null)
+                    {
+                        YargLogger.Fail("`trackDifficulty` cannot be null when processing Elite Keys!");
                         return;
                     }
 

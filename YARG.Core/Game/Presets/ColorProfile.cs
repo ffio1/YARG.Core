@@ -32,6 +32,8 @@ namespace YARG.Core.Game
         public FiveLaneDrumsColors FiveLaneDrums;
         [SettingSubSection]
         public ProKeysColors ProKeys;
+        [SettingSubSection]
+        public EliteKeysColors EliteKeys;
 
         public ColorProfile(string name, bool defaultPreset = false) : base(name, defaultPreset)
         {
@@ -39,6 +41,7 @@ namespace YARG.Core.Game
             FourLaneDrums = new FourLaneDrumsColors();
             FiveLaneDrums = new FiveLaneDrumsColors();
             ProKeys = new ProKeysColors();
+            EliteKeys = new EliteKeysColors();
         }
 
         public override BasePreset CopyWithNewName(string name)
@@ -49,6 +52,7 @@ namespace YARG.Core.Game
                 FourLaneDrums = FourLaneDrums.Copy(),
                 FiveLaneDrums = FiveLaneDrums.Copy(),
                 ProKeys = ProKeys.Copy(),
+                EliteKeys = EliteKeys.Copy(),
             };
         }
 
@@ -61,6 +65,7 @@ namespace YARG.Core.Game
             FourLaneDrums.Serialize(writer);
             FiveLaneDrums.Serialize(writer);
             ProKeys.Serialize(writer);
+            EliteKeys.Serialize(writer);
         }
 
         public void Deserialize(BinaryReader reader, int version = 0)
@@ -72,6 +77,7 @@ namespace YARG.Core.Game
             FourLaneDrums.Deserialize(reader, version);
             FiveLaneDrums.Deserialize(reader, version);
             ProKeys.Deserialize(reader, version);
+            EliteKeys.Deserialize(reader, version);
         }
     }
 }

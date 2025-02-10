@@ -47,6 +47,10 @@ namespace MoonscraperChartEditor.Song.IO
         public const string PRO_KEYS_HARD = "PART REAL_KEYS_H";
         public const string PRO_KEYS_MEDIUM = "PART REAL_KEYS_M";
         public const string PRO_KEYS_EASY = "PART REAL_KEYS_E";
+        public const string ELITE_KEYS_EXPERT = "PART ELITE_KEYS_X";
+        public const string ELITE_KEYS_HARD = "PART ELITE_KEYS_H";
+        public const string ELITE_KEYS_MEDIUM = "PART ELITE_KEYS_M";
+        public const string ELITE_KEYS_EASY = "PART ELITE_KEYS_E";
 
 
         // Matches venue lighting events and groups the text inside (parentheses), not including the parentheses
@@ -99,6 +103,11 @@ namespace MoonscraperChartEditor.Song.IO
         public const byte PRO_KEYS_SHIFT_4 = 7;
         public const byte PRO_KEYS_SHIFT_5 = 9;
         public const byte PRO_KEYS_GLISSANDO = 126;
+
+        // Elite Keys notes
+        public const byte ELITE_KEYS_RANGE_START = 21;  // A0
+        public const byte ELITE_KEYS_RANGE_END = 108;   // C8
+        public const byte ELITE_KEYS_GLISSANDO = 126;
 
         // Pro Guitar channels
         public const byte PRO_GUITAR_CHANNEL_NORMAL = 0;

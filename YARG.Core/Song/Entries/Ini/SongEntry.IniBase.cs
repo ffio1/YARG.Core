@@ -576,7 +576,7 @@ namespace YARG.Core.Song
 
             if (modifiers.Extract("diff_keys", out intensity))
             {
-                parts.ProKeys.Intensity = parts.Keys.Intensity = (sbyte) intensity;
+                parts.ProKeys.Intensity = parts.EliteKeys.Intensity = parts.Keys.Intensity = (sbyte) intensity;
             }
 
             if (modifiers.Extract("diff_drums", out intensity))
@@ -649,6 +649,15 @@ namespace YARG.Core.Song
                 if (parts.Keys.Intensity == -1)
                 {
                     parts.Keys.Intensity = parts.ProKeys.Intensity;
+                }
+            }
+
+            if (modifiers.Extract("diff_keys_elite", out intensity) && intensity != -1)
+            {
+                parts.EliteKeys.Intensity = (sbyte) intensity;
+                if (parts.Keys.Intensity == -1)
+                {
+                    parts.Keys.Intensity = parts.EliteKeys.Intensity;
                 }
             }
 

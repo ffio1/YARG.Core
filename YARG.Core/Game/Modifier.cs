@@ -57,7 +57,8 @@ namespace YARG.Core.Game
             //  GameMode.EliteDrums    or
                 GameMode.ProGuitar     or
             //  GameMode.Dj            or
-                GameMode.ProKeys       => Modifier.None,
+                GameMode.ProKeys       or
+                GameMode.EliteKeys     => Modifier.None,
 
                 _  => throw new NotImplementedException($"Unhandled game mode {gameMode}!")
             };

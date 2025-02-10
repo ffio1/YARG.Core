@@ -1,6 +1,7 @@
 ﻿using System;
 using YARG.Core.Engine;
 using YARG.Core.Engine.Drums;
+using YARG.Core.Engine.EliteKeys;
 using YARG.Core.Engine.Guitar;
 using YARG.Core.Engine.ProKeys;
 using YARG.Core.Engine.Vocals;
@@ -310,6 +311,53 @@ namespace YARG.Core.Game
             {
                 var hitWindow = HitWindow.Create();
                 return new ProKeysEngineParameters(
+                    hitWindow,
+                    DEFAULT_MAX_MULTIPLIER,
+                    DEFAULT_WHAMMY_BUFFER,
+                    SustainDropLeniency,
+                    starMultiplierThresholds,
+                    ChordStaggerWindow,
+                    FatFingerWindow);
+            }
+        }
+
+        public class EliteKeysPreset
+        {
+            [SettingType(SettingType.MillisecondInput)]
+            [SettingRange(min: 0f)]
+            public double ChordStaggerWindow = 0.05;
+
+            [SettingType(SettingType.MillisecondInput)]
+            [SettingRange(min: 0f)]
+            public double FatFingerWindow = 0.1;
+
+            [SettingType(SettingType.MillisecondInput)]
+            [SettingRange(min: 0f, max: 0.05f)]
+            public double SustainDropLeniency = DEFAULT_SUSTAIN_DROP_LENIENCY;
+
+            [SettingType(SettingType.Special)]
+            public HitWindowPreset HitWindow = new()
+            {
+                MaxWindow = 0.14,
+                MinWindow = 0.14,
+                IsDynamic = false,
+                FrontToBackRatio = 1.0
+            };
+
+            public EliteKeysPreset Copy()
+            {
+                return new EliteKeysPreset
+                {
+                    ChordStaggerWindow = ChordStaggerWindow,
+                    FatFingerWindow = FatFingerWindow,
+                    HitWindow = HitWindow.Copy(),
+                };
+            }
+
+            public EliteKeysEngineParameters Create(float[] starMultiplierThresholds)
+            {
+                var hitWindow = HitWindow.Create();
+                return new EliteKeysEngineParameters(
                     hitWindow,
                     DEFAULT_MAX_MULTIPLIER,
                     DEFAULT_WHAMMY_BUFFER,

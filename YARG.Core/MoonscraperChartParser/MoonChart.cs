@@ -90,6 +90,7 @@ namespace MoonscraperChartEditor.Song
             GHLGuitar,
             ProGuitar,
             ProKeys,
+            EliteKeys,
             Vocals,
         }
     }

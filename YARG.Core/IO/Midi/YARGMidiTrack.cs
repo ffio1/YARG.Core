@@ -37,6 +37,10 @@ namespace YARG.Core.IO
             {"PART REAL_KEYS_H",     MidiTrackType.Pro_Keys_H},
             {"PART REAL_KEYS_M",     MidiTrackType.Pro_Keys_M},
             {"PART REAL_KEYS_E",     MidiTrackType.Pro_Keys_E},
+            {"PART ELITE_KEYS_X",    MidiTrackType.Elite_Keys_X },
+            {"PART ELITE_KEYS_H",    MidiTrackType.Elite_Keys_H },
+            {"PART ELITE_KEYS_M",    MidiTrackType.Elite_Keys_M },
+            {"PART ELITE_KEYS_E",    MidiTrackType.Elite_Keys_E },
             {"BEAT",                 MidiTrackType.Beat},
         };
 
@@ -272,6 +276,10 @@ namespace YARG.Core.IO
         Pro_Keys_M,
         Pro_Keys_H,
         Pro_Keys_X,
+        Elite_Keys_E,
+        Elite_Keys_M,
+        Elite_Keys_H,
+        Elite_Keys_X,
         Beat,
         Unknown
     }

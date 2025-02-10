@@ -209,6 +209,7 @@ namespace YARG.Core.Song
                     Instrument.ProBass_22Fret => _parts.ProBass_22Fret,
 
                     Instrument.ProKeys => _parts.ProKeys,
+                    Instrument.EliteKeys => _parts.EliteKeys,
 
                     // Instrument.Dj => DJ,
 
@@ -248,6 +249,7 @@ namespace YARG.Core.Song
                 Instrument.ProBass_22Fret => _parts.ProBass_22Fret.IsActive(),
 
                 Instrument.ProKeys => _parts.ProKeys.IsActive(),
+                Instrument.EliteKeys => _parts.EliteKeys.IsActive(),
 
                 Instrument.Vocals => _parts.LeadVocals.IsActive(),
                 Instrument.Harmony => _parts.HarmonyVocals.IsActive(),

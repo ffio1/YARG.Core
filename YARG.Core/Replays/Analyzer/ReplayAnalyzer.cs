@@ -5,6 +5,8 @@ using YARG.Core.Chart;
 using YARG.Core.Engine;
 using YARG.Core.Engine.Drums;
 using YARG.Core.Engine.Drums.Engines;
+using YARG.Core.Engine.EliteKeys;
+using YARG.Core.Engine.EliteKeys.Engines;
 using YARG.Core.Engine.Guitar;
 using YARG.Core.Engine.Guitar.Engines;
 using YARG.Core.Engine.ProKeys.Engines;
@@ -271,6 +273,26 @@ namespace YARG.Core.Replays.Analyzer
                         notes,
                         _chart.SyncTrack,
                         (ProKeysEngineParameters) parameters,
+                        profile.IsBot);
+                }
+                case GameMode.EliteKeys:
+                {
+                    // Reset the notes
+                    var notes = _chart.EliteKeys.GetDifficulty(profile.CurrentDifficulty).Clone();
+                    profile.ApplyModifiers(notes);
+                    foreach (var note in notes.Notes)
+                    {
+                        foreach (var subNote in note.AllNotes)
+                        {
+                            subNote.ResetNoteState();
+                        }
+                    }
+
+                    // Create engine
+                    return new YargEliteKeysEngine(
+                        notes,
+                        _chart.SyncTrack,
+                        (EliteKeysEngineParameters) parameters,
                         profile.IsBot);
                 }
                 case GameMode.Vocals:

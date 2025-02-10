@@ -405,6 +405,7 @@ namespace YARG.Core.Chart
 
             GameMode.ProGuitar => MoonChart.GameMode.ProGuitar,
             GameMode.ProKeys => MoonChart.GameMode.ProKeys,
+            GameMode.EliteKeys => MoonChart.GameMode.EliteKeys,
 
             GameMode.Vocals => MoonChart.GameMode.Vocals,
 
@@ -434,6 +435,7 @@ namespace YARG.Core.Chart
             Instrument.ProBass_22Fret   => MoonSong.MoonInstrument.ProBass_22Fret,
 
             Instrument.ProKeys => MoonSong.MoonInstrument.ProKeys,
+            Instrument.EliteKeys => MoonSong.MoonInstrument.EliteKeys,
 
             // Vocals and harmony need to be handled specially
             // Instrument.Vocals  => MoonSong.MoonInstrument.Vocals,

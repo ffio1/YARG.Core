@@ -132,6 +132,12 @@ namespace MoonscraperChartEditor.Song
             set => rawNote = Math.Clamp(value, 0, 24);
         }
 
+        public int eliteKeysKey
+        {
+            get => rawNote;
+            set => rawNote = Math.Clamp(value, 0, 87);
+        }
+
         /// <summary>
         /// MIDI note of the vocals pitch, typically ranging from C2 (36) to C6 (84).
         /// </summary>

@@ -12,6 +12,8 @@ namespace YARG.Core.Game
         public VocalsPreset Vocals;
         [SettingSubSection]
         public ProKeysPreset ProKeys;
+        [SettingSubSection]
+        public EliteKeysPreset EliteKeys;
 
         public EnginePreset(string name, bool defaultPreset = false) : base(name, defaultPreset)
         {
@@ -19,6 +21,7 @@ namespace YARG.Core.Game
             Drums = new DrumsPreset();
             Vocals = new VocalsPreset();
             ProKeys = new ProKeysPreset();
+            EliteKeys = new EliteKeysPreset();
         }
 
         public override BasePreset CopyWithNewName(string name)
@@ -29,6 +32,7 @@ namespace YARG.Core.Game
                 Drums = Drums.Copy(),
                 Vocals = Vocals.Copy(),
                 ProKeys = ProKeys.Copy(),
+                EliteKeys = EliteKeys.Copy(),
             };
         }
     }

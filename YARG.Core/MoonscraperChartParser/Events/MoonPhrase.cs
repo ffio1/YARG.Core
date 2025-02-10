@@ -40,6 +40,9 @@ namespace MoonscraperChartEditor.Song
             ProKeys_RangeShift5,
 
             ProKeys_Glissando,
+
+            // Elite keys
+            EliteKeys_Glissando
         }
 
         public uint length;

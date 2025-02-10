@@ -196,6 +196,193 @@
     }
 
     /// <summary>
+    /// The actions available when playing Elite Keys modes.
+    /// </summary>
+    public enum EliteKeysAction : byte
+    {
+        /// <summary>A0 press state, reported as a button.</summary>
+        A0      = 0,
+        /// <summary>ASharp0 press state, reported as a button.</summary>
+        ASharp0 = 1,
+        /// <summary>B0 press state, reported as a button.</summary>
+        B0      = 2,
+        /// <summary>C1 press state, reported as a button.</summary>
+        C1      = 3,
+        /// <summary>CSharp1 press state, reported as a button.</summary>
+        CSharp1 = 4,
+        /// <summary>D1 press state, reported as a button.</summary>
+        D1      = 5,
+        /// <summary>DSharp1 press state, reported as a button.</summary>
+        DSharp1 = 6,
+        /// <summary>E1 press state, reported as a button.</summary>
+        E1      = 7,
+        /// <summary>F1 press state, reported as a button.</summary>
+        F1      = 8,
+        /// <summary>FSharp1 press state, reported as a button.</summary>
+        FSharp1 = 9,
+        /// <summary>G1 press state, reported as a button.</summary>
+        G1      = 10,
+        /// <summary>GSharp1 press state, reported as a button.</summary>
+        GSharp1 = 11,
+        /// <summary>A1 press state, reported as a button.</summary>
+        A1      = 12,
+        /// <summary>ASharp1 press state, reported as a button.</summary>
+        ASharp1 = 13,
+        /// <summary>B1 press state, reported as a button.</summary>
+        B1      = 14,
+        /// <summary>C2 press state, reported as a button.</summary>
+        C2      = 15,
+        /// <summary>CSharp2 press state, reported as a button.</summary>
+        CSharp2 = 16,
+        /// <summary>D2 press state, reported as a button.</summary>
+        D2      = 17,
+        /// <summary>DSharp2 press state, reported as a button.</summary>
+        DSharp2 = 18,
+        /// <summary>E2 press state, reported as a button.</summary>
+        E2      = 19,
+        /// <summary>F2 press state, reported as a button.</summary>
+        F2      = 20,
+        /// <summary>FSharp2 press state, reported as a button.</summary>
+        FSharp2 = 21,
+        /// <summary>G2 press state, reported as a button.</summary>
+        G2      = 22,
+        /// <summary>GSharp2 press state, reported as a button.</summary>
+        GSharp2 = 23,
+        /// <summary>A2 press state, reported as a button.</summary>
+        A2      = 24,
+        /// <summary>ASharp2 press state, reported as a button.</summary>
+        ASharp2 = 25,
+        /// <summary>B2 press state, reported as a button.</summary>
+        B2      = 26,
+        /// <summary>C3 press state, reported as a button.</summary>
+        C3      = 27,
+        /// <summary>CSharp3 press state, reported as a button.</summary>
+        CSharp3 = 28,
+        /// <summary>D3 press state, reported as a button.</summary>
+        D3      = 29,
+        /// <summary>DSharp3 press state, reported as a button.</summary>
+        DSharp3 = 30,
+        /// <summary>E3 press state, reported as a button.</summary>
+        E3      = 31,
+        /// <summary>F3 press state, reported as a button.</summary>
+        F3      = 32,
+        /// <summary>FSharp3 press state, reported as a button.</summary>
+        FSharp3 = 33,
+        /// <summary>G3 press state, reported as a button.</summary>
+        G3      = 34,
+        /// <summary>GSharp3 press state, reported as a button.</summary>
+        GSharp3 = 35,
+        /// <summary>A3 press state, reported as a button.</summary>
+        A3      = 36,
+        /// <summary>ASharp3 press state, reported as a button.</summary>
+        ASharp3 = 37,
+        /// <summary>B3 press state, reported as a button.</summary>
+        B3      = 38,
+        /// <summary>C4 press state, reported as a button.</summary>
+        C4      = 39,
+        /// <summary>CSharp4 press state, reported as a button.</summary>
+        CSharp4 = 40,
+        /// <summary>D4 press state, reported as a button.</summary>
+        D4      = 41,
+        /// <summary>DSharp4 press state, reported as a button.</summary>
+        DSharp4 = 42,
+        /// <summary>E4 press state, reported as a button.</summary>
+        E4      = 43,
+        /// <summary>F4 press state, reported as a button.</summary>
+        F4      = 44,
+        /// <summary>FSharp4 press state, reported as a button.</summary>
+        FSharp4 = 45,
+        /// <summary>G4 press state, reported as a button.</summary>
+        G4      = 46,
+        /// <summary>GSharp4 press state, reported as a button.</summary>
+        GSharp4 = 47,
+        /// <summary>A4 press state, reported as a button.</summary>
+        A4      = 48,
+        /// <summary>ASharp4 press state, reported as a button.</summary>
+        ASharp4 = 49,
+        /// <summary>B4 press state, reported as a button.</summary>
+        B4      = 50,
+        /// <summary>C5 press state, reported as a button.</summary>
+        C5      = 51,
+        /// <summary>CSharp5 press state, reported as a button.</summary>
+        CSharp5 = 52,
+        /// <summary>D5 press state, reported as a button.</summary>
+        D5      = 53,
+        /// <summary>DSharp5 press state, reported as a button.</summary>
+        DSharp5 = 54,
+        /// <summary>E5 press state, reported as a button.</summary>
+        E5      = 55,
+        /// <summary>F5 press state, reported as a button.</summary>
+        F5      = 56,
+        /// <summary>FSharp5 press state, reported as a button.</summary>
+        FSharp5 = 57,
+        /// <summary>G5 press state, reported as a button.</summary>
+        G5      = 58,
+        /// <summary>GSharp5 press state, reported as a button.</summary>
+        GSharp5 = 59,
+        /// <summary>A5 press state, reported as a button.</summary>
+        A5      = 60,
+        /// <summary>ASharp5 press state, reported as a button.</summary>
+        ASharp5 = 61,
+        /// <summary>B5 press state, reported as a button.</summary>
+        B5      = 62,
+        /// <summary>C6 press state, reported as a button.</summary>
+        C6      = 63,
+        /// <summary>CSharp6 press state, reported as a button.</summary>
+        CSharp6 = 64,
+        /// <summary>D6 press state, reported as a button.</summary>
+        D6      = 65,
+        /// <summary>DSharp6 press state, reported as a button.</summary>
+        DSharp6 = 66,
+        /// <summary>E6 press state, reported as a button.</summary>
+        E6      = 67,
+        /// <summary>F6 press state, reported as a button.</summary>
+        F6      = 68,
+        /// <summary>FSharp6 press state, reported as a button.</summary>
+        FSharp6 = 69,
+        /// <summary>G6 press state, reported as a button.</summary>
+        G6      = 70,
+        /// <summary>GSharp6 press state, reported as a button.</summary>
+        GSharp6 = 71,
+        /// <summary>A6 press state, reported as a button.</summary>
+        A6      = 72,
+        /// <summary>ASharp6 press state, reported as a button.</summary>
+        ASharp6 = 73,
+        /// <summary>B6 press state, reported as a button.</summary>
+        B6      = 74,
+        /// <summary>C7 press state, reported as a button.</summary>
+        C7      = 75,
+        /// <summary>CSharp7 press state, reported as a button.</summary>
+        CSharp7 = 76,
+        /// <summary>D7 press state, reported as a button.</summary>
+        D7      = 77,
+        /// <summary>DSharp7 press state, reported as a button.</summary>
+        DSharp7 = 78,
+        /// <summary>E7 press state, reported as a button.</summary>
+        E7      = 79,
+        /// <summary>F7 press state, reported as a button.</summary>
+        F7      = 80,
+        /// <summary>FSharp7 press state, reported as a button.</summary>
+        FSharp7 = 81,
+        /// <summary>G7 press state, reported as a button.</summary>
+        G7      = 82,
+        /// <summary>GSharp7 press state, reported as a button.</summary>
+        GSharp7 = 83,
+        /// <summary>A7 press state, reported as a button.</summary>
+        A7      = 84,
+        /// <summary>ASharp7 press state, reported as a button.</summary>
+        ASharp7 = 85,
+        /// <summary>B7 press state, reported as a button.</summary>
+        B7      = 86,
+        /// <summary>C8 press state, reported as a button.</summary>
+        C8      = 87,
+        /// <summary>The Star Power action, reported as a button.</summary>
+        StarPower = 88,
+        /// <summary>The touch effects bar, reported as an axis.</summary>
+        TouchEffects = 89,
+    }
+
+    /// <summary>
     /// The actions available when playing drums modes.
     /// </summary>
     public enum DrumsAction : byte

@@ -25,6 +25,7 @@ namespace YARG.Core
         // 10-14: Pro instruments
         ProGuitar = 10,
         ProKeys = 11,
+        EliteKeys = 12,
 
         // 15-19: Vocals
         Vocals = 15,
@@ -65,6 +66,7 @@ namespace YARG.Core
         ProBass_22Fret = 33,
 
         ProKeys = 34,
+        EliteKeys = 35,
 
         // 40-49: Vocals
         Vocals = 40,
@@ -139,6 +141,7 @@ namespace YARG.Core
                 Instrument.ProBass_22Fret => GameMode.ProGuitar,
 
                 Instrument.ProKeys => GameMode.ProKeys,
+                Instrument.EliteKeys => GameMode.EliteKeys,
 
                 Instrument.Vocals or
                 Instrument.Harmony => GameMode.Vocals,
@@ -192,6 +195,11 @@ namespace YARG.Core
                 GameMode.ProKeys        => new[]
                 {
                     Instrument.ProKeys
+                },
+                GameMode.EliteKeys      => new[]
+                {
+                    Instrument.ProKeys,
+                    Instrument.EliteKeys
                 },
                 GameMode.Vocals         => new[]
                 {

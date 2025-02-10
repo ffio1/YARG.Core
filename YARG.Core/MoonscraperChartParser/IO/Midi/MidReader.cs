@@ -162,6 +162,19 @@ namespace MoonscraperChartEditor.Song.IO
                         ReadNotes(ref settings, track, song, MoonSong.MoonInstrument.ProKeys, MoonSong.Difficulty.Easy);
                         break;
 
+                    case MidIOHelper.ELITE_KEYS_EXPERT:
+                        ReadNotes(ref settings, track, song, MoonSong.MoonInstrument.EliteKeys, MoonSong.Difficulty.Expert);
+                        break;
+                    case MidIOHelper.ELITE_KEYS_HARD:
+                        ReadNotes(ref settings, track, song, MoonSong.MoonInstrument.EliteKeys, MoonSong.Difficulty.Hard);
+                        break;
+                    case MidIOHelper.ELITE_KEYS_MEDIUM:
+                        ReadNotes(ref settings, track, song, MoonSong.MoonInstrument.EliteKeys, MoonSong.Difficulty.Medium);
+                        break;
+                    case MidIOHelper.ELITE_KEYS_EASY:
+                        ReadNotes(ref settings, track, song, MoonSong.MoonInstrument.EliteKeys, MoonSong.Difficulty.Easy);
+                        break;
+
                     case MidIOHelper.VOCALS_TRACK:
                         // Parse lyrics to global track, and then parse as an instrument
                         ReadTextEventsIntoGlobalEventsAsLyrics(track, song);
