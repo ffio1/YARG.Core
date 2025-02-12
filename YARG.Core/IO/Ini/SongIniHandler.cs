@@ -60,6 +60,7 @@ namespace YARG.Core.IO.Ini
                 { "diff_guitarghl",                       new("diff_guitarghl", ModifierType.Int32) },
                 { "diff_keys",                            new("diff_keys", ModifierType.Int32) },
                 { "diff_keys_real",                       new("diff_keys_real", ModifierType.Int32) },
+                { "diff_keys_elite",                      new("diff_keys_elite", ModifierType.Int32) },  
                 { "diff_keys_real_ps",                    new("diff_keys_real_ps", ModifierType.Int32) },
                 { "diff_rhythm",                          new("diff_rhythm", ModifierType.Int32) },
                 { "diff_rhythm_ghl",                      new("diff_rhythm_ghl", ModifierType.Int32) },
