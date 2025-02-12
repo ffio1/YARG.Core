@@ -200,6 +200,8 @@
     /// </summary>
     public enum EliteKeysAction : byte
     {
+        MIDI_OFFSET = 21,
+
         /// <summary>A0 press state, reported as a button.</summary>
         A0      = 0,
         /// <summary>ASharp0 press state, reported as a button.</summary>
