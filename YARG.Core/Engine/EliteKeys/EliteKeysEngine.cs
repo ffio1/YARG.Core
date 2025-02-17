@@ -310,7 +310,7 @@ namespace YARG.Core.Engine.EliteKeys
 
         protected void ToggleKey(int key, bool active)
         {
-            KeyMask = active ? KeyMask | (new BigInteger(1) << key) : KeyMask & ~(new BigInteger(1) << key);
+            KeyMask = active ? KeyMask | (BigInteger.One << key) : KeyMask & ~(BigInteger.One << key);
         }
 
         protected bool IsKeyInTime(EliteKeysNote note, int key, double frontEnd)

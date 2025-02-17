@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using YARG.Core.Chart;
 using YARG.Core.Input;
 using YARG.Core.Logging;
@@ -70,7 +71,7 @@ namespace YARG.Core.Engine.EliteKeys.Engines
                 {
                     YargLogger.LogFormatTrace("Fat Finger timer expired at {0}", CurrentTime);
 
-                    var fatFingerKeyMask = 1 << FatFingerKey;
+                    var fatFingerKeyMask = BigInteger.One << FatFingerKey;
 
                     var isHoldingWrongKey = (KeyMask & fatFingerKeyMask) == fatFingerKeyMask;
 

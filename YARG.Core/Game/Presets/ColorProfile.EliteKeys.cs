@@ -12,6 +12,7 @@ namespace YARG.Core.Game
             #region Keys
 
             public Color WhiteKey = Color.White;
+            public Color BlackKey = Color.Black;
 
             public Color RedKey = Color.FromArgb(0xFF, 0x7F, 0x0E, 0x11); // #7F0E11
             public Color YellowKey = Color.FromArgb(0xFF, 0x7F, 0x74, 0x00); // #7F7400
@@ -25,15 +26,7 @@ namespace YARG.Core.Game
             /// </summary>
             public Color GetBlackKeyColor(int groupIndex)
             {
-                return groupIndex switch
-                {
-                    0 => RedKey,
-                    1 => YellowKey,
-                    2 => BlueKey,
-                    3 => GreenKey,
-                    4 => OrangeKey,
-                    _ => default
-                };
+                return BlackKey;
             }
 
             #endregion
