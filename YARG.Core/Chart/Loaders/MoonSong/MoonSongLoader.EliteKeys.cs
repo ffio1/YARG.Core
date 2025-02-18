@@ -28,7 +28,7 @@ namespace YARG.Core.Chart
 
         private EliteKeysNote CreateEliteKeysNote(MoonNote moonNote, Dictionary<MoonPhrase.Type, MoonPhrase> currentPhrases)
         {
-            var key = moonNote.proKeysKey;
+            var key = moonNote.eliteKeysKey;
             var generalFlags = GetGeneralFlags(moonNote, currentPhrases);
             var eliteKeysFlags = GetEliteKeysNoteFlags(moonNote, currentPhrases);
 
